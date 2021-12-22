@@ -1,9 +1,3 @@
-<style>
-img{
-    width: 60%;
-    padding-left: 20%;
-}
-</style>
 # Metagenome 笔记
 
 主要是分为五个步骤
