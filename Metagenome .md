@@ -109,13 +109,19 @@
 
 ## 3. Sequence analysis
 
-关于宏基因组分析方法[**见2.1-2.5**](https://zhuanlan.zhihu.com/p/106405153)，
+目前已有许多从测序结果中计算重建微生物群落组成的方法。选择“最好的”是一项艰巨的任务，在很大程度上取决于研究的目的。
+
+**关于宏基因组分析方法[**见2.1-2.5**](https://zhuanlan.zhihu.com/p/106405153)**
 
 - **Read-based (mapping)和assembly-based两种分析策略**
   
- 1. assembly-based approach 受到覆盖度的制约，因为组装时低覆盖度的区域是不会进行组装的，而是被丢弃，这样低丰度的细菌的信息就被丢弃了，反映在reads利用率上，就是往往reads利用率极低，往往低于50%。关于kmer和de Bruijn的定义[**见此**](https://zhuanlan.zhihu.com/p/57177938) 
-      1. assembly-based approach 特别适用于微生物组研究尤其是包含大量以前未观测到（未测序）微生物，被部分参考序列覆盖的宏基因数据。assembly-based approach 的优势在于，他们不依赖于参考基因组的使用，而其他分析方法则会缺失群落中部分新的微生物信息
-      2. 宏基因组的拼接很困难，因为每个基因组的覆盖范围取决于群落中每个基因组的丰度。低丰度的基因组可以通过调低kmer恢复，但这样重复kmer的频率会增加，使得基因的正确重建有更多的困难
+ 1. 宏基因组从头组装（de novo assenmbly)在概念上与全基因组组装相似。即利用de Bruijn图，通过将每个序列读取分解成固定长度k的重叠子序列来构建整个基因条带。关于kmer和de Bruijn的定义[**见此**](https://zhuanlan.zhihu.com/p/57177938) 
+   
+    1. assembly-based approach 受到覆盖度的制约，因为组装时低覆盖度的区域是不会进行组装的，而是被丢弃，这样低丰度的细菌的信息就被丢弃了，反映在reads利用率上，就是往往reads利用率极低，往往低于50%。
+    2. assembly-based approach 特别适用于微生物组研究尤其是包含大量以前未观测到（未测序）微生物，被部分参考序列覆盖的宏基因数据。assembly-based approach 的优势在于，他们不依赖于参考基因组的使用，而其他分析方法则会缺失群落中部分新的微生物信息
+    3. 宏基因组的拼接很困难，因为每个基因组的覆盖范围取决于群落中每个基因组的丰度。低丰度的基因组可以通过调低kmer恢复，但这样重复kmer的频率会增加，使得基因的正确重建有更多的困难
+    4. 除此之外，还有一个问题是，一个样本可能含有同一种细菌的不同菌株。这些密切相关的基因组可以在组装图中引起分支，它们可能因单个核苷酸变异或整个基因或操纵子的存在或不存在而不同。汇编程序通常会在这些分支点停止，从而导致分段重构
+   
  2. read-based (mapping) approach 则受到reference databases的制约，因为细菌的遗传多样性很高，即便是同一个菌种，它的不同菌株，其基因组的组成也是有相对比较大的差异的，那么在mapping的时候就会出现mapping不上的问题，使得mapping效率不够高；而且只能分析reference databases中有的物种，对于reference databases未收录的新物种，是无法进行分析的。
 
  |         | Assembly-based analysis | Read-based analysis （'mapping') |
@@ -130,7 +136,15 @@
  
  不过可用的微生物参考基因组正在迅速地增加，包括那些原先难以培养的细菌由于培养方法的改进，使得对其进行测序成为可能，再加上单细胞测序的途径和 metagenomic assembly的途径得到的基因组序列。现在一些类型的环境样品（如人肠道）的参考基因组的多样性已经可以满足 assembly-free taxonomic profiling 的要求。
 
+- **Reads contigs scatffolds 定义**
 
+![avatar](2.png)
+
+1. shotgun打碎后得到的150bp-300bp的能够得到准确测序结果的小片段叫做**reads**
+2. 经过de bruijn图算法堆叠后形成的稍长一点的片段叫做**contigs**
+3. 最后不同的**contigs**通过比对数据库来重建整个基因组，最后得到的片段叫做**scaffold**，而这个过程叫做**binning**
+   
+   1. 
    
 
 
