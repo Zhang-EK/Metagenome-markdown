@@ -1,6 +1,3 @@
-# Metagenome-markdown
-宏基因组笔记
-
 # Metagenome 笔记
 
 主要是分为五个步骤
