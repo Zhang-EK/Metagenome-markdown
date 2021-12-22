@@ -1,6 +1,6 @@
 # Metagenome 笔记
 
-主要是分为五个步骤是ih
+主要是分为五个步骤
 
 ![avatar](1.png)
 
