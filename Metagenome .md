@@ -8,11 +8,11 @@
 
 实验设计以及测序实验的进行，最后得到测序的结果
 
-- **实验设计**
+### 实验设计
 1. 对照组的样本可能很难获得，特别是对于来自复杂环境的样品。因为微生物含量可以在同一环境下的不同样品之间变化，这使得在小组样品之间检测统计意义和生物学意义的差异变得复杂。一般来说建议进行纵向研究，将来自同一生境的样本随时间推移纳入研究，而不是简单的横向研究，比较不同生境的样本
 2. 如果样本来源于动物模型，特别是同居的啮齿动物，则应考虑动物年龄、居住环境甚至接触动物的人的性别对微生物群落的潜在影响。通过单独饲养动物来防止微生物在笼中不同动物之间传播，将来自不同实验群体的动物安置在同一个笼子里，或用来自不同供应商或具有不同遗传背景的老鼠进行重复实验，这些方法通常是可行的(尽管这可能会导致动物的行为变化)
 
-- **样品采集和DNA提取**
+### 样品采集和DNA提取
 1. 样品的提取步骤以及保存的条件会对宏基因组数据的准确性和质量产生影响。在某些情况下这些步骤的影响甚至可能会超过实验中不同组之间的差异。
 2. 关键目标是收集足够的微生物生物量进行测序，并尽量减少样品的污染
 3. 多篇文献证明样品采集和冷冻之间的时间长短，冻融循环次数等因素可以影响检测到的微生物群落概况。因此，样品收集保存的条件要记录下来
@@ -21,12 +21,12 @@
 
 ## 2. Pre-processing
 
-- **Library preparation and sequencing （库准备和排序）**
+### Library preparation and sequencing （库准备和排序）
 
 1. 目前使用的平台主要是Illumina
 2. 对于特定环境或研究类型的“正确”测序覆盖量，目前还没有公布的指导方针，也不太可能存在这样的数字。一般来说根据经验，建议选择最大限度的数据输出，以便检索尽可能多的低丰度的微生物组成员
 
-- **FastQC总报告信息**  
+### FastQC总报告信息  
 
 这一步中需要使用FastQC、Trimmomatic、Picard tools等工具进行测序结果的筛选工作，以提高样本的准确性，来使后续的实验结果更加的可信
 
@@ -38,7 +38,7 @@
  2. %GC 是需要重点关注的一个指标，这个值表示的是整体序列中的GC含量，不同物种的值不一样，比如人类细胞就是42%左右。
  3. Total Sequences记录了输入文本的reads的数量
 
-- **Per base sequence quality**
+### Per base sequence quality
   
 ![avatar](https://pic4.zhimg.com/38670ee6d5f373e326e3fe3e23ba4f9b_r.jpg)
 
@@ -48,7 +48,7 @@
  4. 图中蓝色的细线是各个位置的平均值的连线
  5. 一般要求此图中，所有位置的10%分位数大于20,也就是我们常说的Q20过滤(bar的下边不低于20,图中的结果87bp之后的要去掉)
 
-- **Per tile sequence quality**
+### Per tile sequence quality
    
 ![avatar](https://pic3.zhimg.com/ccf9bb69e20e2a3561581d08f57ef63e_r.jpg)
 
@@ -56,7 +56,7 @@
  2. 纵轴是tail的编号
  3. 蓝色代表质量好，如果出现暖色则代表该tail的质量不好，在后续的实验中要把它去掉
    
-- **Per sequence quality scores**
+### Per sequence quality scores
   
 ![avatar](https://pic4.zhimg.com/63086aca8162f21cb685d45c20e88b6f_r.jpg)
 
@@ -64,7 +64,7 @@
  2. 纵轴是每个值对应的reads数目
  3. 观察测序结果所集中的Q值，越高越好
 
-- **Per base sequence content** 
+### Per base sequence content
   
   ![avatar](https://pic1.zhimg.com/80/1b78609b8c4690eddf1eb1408c26f10c_720w.png)
 
@@ -72,7 +72,7 @@
  2. 图中四条线代表A T C G在每个位置平均含量
  3. 理论上来说，A和T应该相等，G和C应该相等，但是一般测序的时候，刚开始测序仪状态不稳定，就会出现上图的情况。像这种情况，即使测序的得分很高，也需要cut开始部分的序列信息。一般像碰到这种情况，会cut前面5bp
 
-- **Per sequence GC content**
+### Per sequence GC content
   
   ![avatar](https://pic3.zhimg.com/5fead4df4b5c980b7519ddd536a7b196_r.jpg)
 
@@ -80,7 +80,7 @@
  2.  蓝色的线是程序根据经验分布给出的理论值，红色是真实值，两个应该比较接近才比较好
  3.  当红色的线出现双峰，基本肯定是混入了其他物种的DNA序列(图中的结果比较好)
 
-- **Sequence length distribution**
+### Sequence length distribution
   
   ![avatar](https://pic1.zhimg.com/97d24fbdf9e42fc057072f7582e1532c_r.jpg)
 
@@ -88,7 +88,7 @@
  2. 比如此图中，101bp是主要的，但是还是有少量的100和102bp的长度，不过数量比较少，不影响后续分析
  3. 当测序的长度不同时，如果很严重，则表明测序仪在此次测序过程中产生的数据不可信 
 
-- **Adapter content**
+### Adapter content
   
   
   ![avatar](https://pic2.zhimg.com/7563b88d741b0f97e8546325f91e9969_r.jpg)
@@ -99,7 +99,7 @@
  2. 如果在当时fastqc分析的时候-a选项没有内容，则默认使用图例中的四种通用adapter序列进行统计
  3. 本例中adapter都已经去除，如果有adapter序列没有去除干净的情况，在后续分析的时候需要先使用软件进行去接头
 
-- **Kmer content** 
+### Kmer content
    
   ![avatar](https://pic4.zhimg.com/d36385723bfbe857c1d0516c622fc05f_r.jpg)
 
@@ -111,9 +111,9 @@
 
 目前已有许多从测序结果中计算重建微生物群落组成的方法。选择“最好的”是一项艰巨的任务，在很大程度上取决于研究的目的。
 
-**关于宏基因组分析方法[**见2.1-2.5**](https://zhuanlan.zhihu.com/p/106405153)**
+关于宏基因组分析方法[**见2.1-2.5**](https://zhuanlan.zhihu.com/p/106405153)
 
-- **Reads contigs scatffolds 定义**
+### Reads contigs scatffolds 定义
 
 ![avatar](2.png)
 
@@ -124,7 +124,7 @@
    1. 宏基因组组合是高度碎片化的，包含数千个contigs，研究人员不知道哪个contig来自哪个基因组，甚至不知道存在多少个基因组。binning的目的是将contig分组成物种
    2. 不同的微生物物种的基因组包含特定的碱基组合，这导致了不同的k-mer频率，基于这些k-mer频率的度量可以用于分组
 
-- **Read-based (mapping)和assembly-based两种分析策略**
+### Read-based (mapping)和assembly-based两种分析策略
   
 1. 宏基因组从头组装（de novo assenmbly)在概念上与全基因组组装相似。即利用de Bruijn图，通过将每个序列读取分解成固定长度k的重叠子序列来构建整个基因条带。关于kmer和de Bruijn的定义[**见此**](https://zhuanlan.zhihu.com/p/57177938) 
    
@@ -148,7 +148,7 @@
  
  不过可用的微生物参考基因组正在迅速地增加，包括那些原先难以培养的细菌由于培养方法的改进，使得对其进行测序成为可能，再加上单细胞测序的途径和 metagenomic assembly的途径得到的基因组序列。现在一些类型的环境样品（如人肠道）的参考基因组的多样性已经可以满足 assembly-free taxonomic profiling 的要求。
 
-- **Binning的原理**
+### Binning的原理
 
 1. 根据核酸组成信息来进行binning（k-mer frequencies）
    
@@ -165,7 +165,7 @@
 4. 同时依据核酸组成和丰度变化信息
    1. 将核酸组成信息和丰度差异信息创建一个综合的距离矩阵，既能保证binning效果，也能相对节约计算资源，现在比较主流的binning软件多是同时依据核酸组成和丰度变化信息
 
-- **binning的具体操作**
+### binning的具体操作
 
 从原始的clean reads，还是从组装成的contig，还是从预测到的gene，都可以。根据基于聚类的序列类型的不同，暂且分为reads binning， contig binning和 genes binning
 
@@ -182,9 +182,9 @@
 3.  **genes binning**
     1.  应用非常广泛。原因可能是（1）基于genes丰度变化模式进行binning可操作性比较强，宏基因组分析中肯定都会计算gene丰度，一般不会计算contig丰度，gene丰度数据可以信手拈来；（2）基于genes binning有很多可参考的文献，过程也并不复杂，可复制性强；（3）对计算机资源消耗比较低
    
-**总体来说应用最广泛的就是基于genes binning 和 contig binning**
+总体来说应用最广泛的就是基于genes binning 和 contig binning
 
-- **Assembly-free metagenomic profilling**
+### Assembly-free metagenomic profilling
 
 宏基因组的分类分析确定了哪些微生物物种存在于宏基因组中，并估计了它们的丰度。这可以通过外部序列数据资源(如公开可用的参考基因组)来实现，而无需组装
 
