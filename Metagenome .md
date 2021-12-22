@@ -181,8 +181,15 @@
    3. 如 Brian Cleary 等 (DOI:10.1038/nbt.3329.Detection) 利用基于 reads binning 的 latent strain analysis 可以聚类出丰度低至0.00001%的菌株。此方法虽然得到更全面的 bins，但低丰度 bins 信息依旧不完整。 
 3.  **genes binning**
     1.  应用非常广泛。原因可能是（1）基于genes丰度变化模式进行binning可操作性比较强，宏基因组分析中肯定都会计算gene丰度，一般不会计算contig丰度，gene丰度数据可以信手拈来；（2）基于genes binning有很多可参考的文献，过程也并不复杂，可复制性强；（3）对计算机资源消耗比较低
-   
+
 总体来说应用最广泛的就是基于genes binning 和 contig binning
+
+### Genes binning的一般流程
+   
+![avatar](https://raw.githubusercontent.com/Ming-Lian/NGS-analysis/master/picture/Metagenome-gene-binning-2.png)
+
+在宏基因组做完组装和基因预测之后，把所有样品中预测到的基因混合在一起，去冗余得到unique genes集合，对这个unique genes集合进行binning，主要是根据gene在各个样品中的丰度变化模式，计算gene之间的相关性，利用这种相关性进行聚类
+
 
 ### Assembly-free metagenomic profilling
 
@@ -193,13 +200,9 @@
 3. 由于缺乏具有代表性的参考基因组，对包括土壤和海洋在内的更多样化环境的分析受到了阻碍。因此，在分析来自这些环境的宏基因组时，通常建议使用组装。
 4. 通过从现有的参考序列中选择具有代表性或区别性的基因(标记)进行分类分析是另一种快速和准确的无组合方法
 
-   
-
-
-
-
-
-
 ## 4. Post-processing
+
+无论初级宏基因组序列分析使用何种方法，输出都将包含样本与微生物特征(即物种、分类单元、基因和途径)的数据矩阵。 post-processing 就是使用统计工具来解释这些上面的结果，并解释这些发现如何与样本原数据相关联
+
 
 ## 5. Validation
