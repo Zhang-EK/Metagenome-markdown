@@ -93,7 +93,7 @@
   
   ![avatar](https://pic2.zhimg.com/7563b88d741b0f97e8546325f91e9969_r.jpg)
 
-  关于adapter、barcode、insert序列的简介以及如何去adapter[**见此**](https://blog.csdn.net/sinat_38163598/article/details/72857172)
+  关于adapter、barcode、insert序列的简介以及如何去adapter[**见此**](https://blog.csdn.net/weixin_30933531/article/details/96585870?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-1.highlightwordscore&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-1.highlightwordscore)
 
  1. 此图衡量的是序列中两端adapter的情况
  2. 如果在当时fastqc分析的时候-a选项没有内容，则默认使用图例中的四种通用adapter序列进行统计
