@@ -126,7 +126,9 @@
 
 ### Read-based (mapping)和assembly-based两种分析策略
   
-1. 宏基因组从头组装（de novo assenmbly)在概念上与全基因组组装相似。即利用de Bruijn图，通过将每个序列读取分解成固定长度k的重叠子序列来构建整个基因条带。关于kmer和de Bruijn的定义[**见此**](https://zhuanlan.zhihu.com/p/57177938) 
+1. 宏基因组从头组装（de novo assenmbly)在概念上与全基因组组装相似。即利用de Bruijn图，通过将每个序列读取分解成固定长度k的重叠子序列来构建整个基因条带。关于kmer和de Bruijn的定义[**见此**](https://zhuanlan.zhihu.com/p/57177938)
+   
+   利用宏基因组denovo（从头）组装技术，宏基因组reads首先组装成contigs，并且在某些情况下，有可能重建群落中优势成员的基因组。在组装步骤后，通过与参考基因组的序列比对，将分类或系统发育信息归于每个contig。 
    
     1. assembly-based approach 受到覆盖度的制约，因为组装时低覆盖度的区域是不会进行组装的，而是被丢弃，这样低丰度的细菌的信息就被丢弃了，反映在reads利用率上，就是往往reads利用率极低，往往低于50%。
     2. assembly-based approach 特别适用于微生物组研究尤其是包含大量以前未观测到（未测序）微生物，被部分参考序列覆盖的宏基因数据。assembly-based approach 的优势在于，他们不依赖于参考基因组的使用，而其他分析方法则会缺失群落中部分新的微生物信息
